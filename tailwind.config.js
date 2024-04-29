@@ -18,8 +18,6 @@ module.exports = {
         DEFAULT: "1rem",
         sm: "1.5rem",
         md: "3rem",
-        lg: "5rem",
-        xl: "7.5rem",
       },
     },
     screens: {
@@ -90,7 +88,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       backgroundImage: {
-        home: "url('/bg-grid.svg')",
+        home: "url('/HomeBg.jpg')",
         ideal: "url('/bg-gridsm.svg')",
         smallHome: "url('/bg-small.svg')",
         pricing: "url('/bg-pricing.svg')",

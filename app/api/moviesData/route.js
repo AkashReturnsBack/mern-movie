@@ -4,12 +4,11 @@ import fs from 'fs/promises';
 import path from "path";
 
 
-export async function GET() {
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('Database Connected Successfully!'))
+    .catch(err => console.log(err.message));
 
-    mongoose.connect(process.env.MONGO_URI)
-        .then(() => console.log('Database Connected Successfully!'))
-        .catch(err => console.log(err.message));
-
+export async function POST() {
 
     try {
         const movieDataPath = path.join(process.cwd(), "/app/api/movieData.json");
@@ -23,7 +22,6 @@ export async function GET() {
             moviesToSave.push(newMovie);
         }
 
-        // saving movies in bulk
         await Movie.insertMany(moviesToSave);
         console.log('Movies saved successfully!');
 
@@ -32,6 +30,7 @@ export async function GET() {
             message: "Movies uploaded successfully!",
             data: moviesToSave
         });
+
     } catch (err) {
         console.error(err);
         return Response.json({
@@ -42,4 +41,14 @@ export async function GET() {
         // Close the MongoDB connection (optional, but recommended for long-running processes)
         await mongoose.connection.close();
     }
-} 
+}
+
+export async function GET() {
+
+    const movies = await Movie.find({});
+
+    return Response.json({
+        success: true,
+        data: movies
+    })
+}
