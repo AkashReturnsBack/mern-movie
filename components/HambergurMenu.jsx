@@ -2,7 +2,6 @@ import {
     Sheet,
     SheetClose,
     SheetContent,
-    SheetDescription,
     SheetFooter,
     SheetHeader,
     SheetTitle,
@@ -33,8 +32,8 @@ const HambergurMenu = () => {
                 </div>
                 <div className='border-b-[1px] border-black py-4'>
                     <h2 className='font-semibold text-xl text-start'>Account</h2>
-                    <div className='flex items-center gap-2 py-2 px-2 hover:bg-white hover:opacity-90 transition-all duration-500 ease-in-out hover:tracking-widest hover:text-black rounded-sm cursor-pointer'><FaCircleUser className='flex-shrink-0' /> Akash</div>
-                    <div className='flex items-center gap-2 py-2 px-2 hover:bg-white hover:opacity-90 transition-all duration-500 ease-in-out hover:tracking-widest hover:text-black rounded-sm cursor-pointer'><FaRegCircleUser className='flex-shrink-0' /> Raman</div>
+                    <div className='flex items-center gap-2 py-2 px-2 hover:bg-black hover:opacity-90 rounded-sm hover:text-white cursor-pointer transition-all duration-500 ease-in-out hover:tracking-widest'><FaCircleUser className='flex-shrink-0' /> Akash</div>
+                    <div className='flex items-center gap-2 py-2 px-2 hover:bg-black hover:opacity-90 rounded-sm hover:text-white cursor-pointer transition-all duration-500 ease-in-out hover:tracking-widest'><FaRegCircleUser className='flex-shrink-0' /> Raman</div>
                 </div>
             </SheetHeader>
             <SheetFooter>

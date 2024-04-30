@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import React, { useEffect, useState } from 'react'
 import { BiSortAlt2 } from "react-icons/bi";
 import { CiHeart } from 'react-icons/ci';
