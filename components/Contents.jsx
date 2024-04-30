@@ -29,7 +29,7 @@ const Contents = () => {
     }
 
     const handleFavourites = async (rank) => {
-        const data = addToFav(rank);
+        const data = await addToFav(rank);
         console.log(data);
         toast({
             title: <span>{data?.message}</span>
