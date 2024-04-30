@@ -742,7 +742,7 @@ const Contents = () => {
                 <img className='w-full h-full blackishBg' src='https://imgs.search.brave.com/yzCgKAOafpkAj4JT5KJgq_AVZU_AGU3P2cxYbeKVuOg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9yZW5k/ZXIuZmluZWFydGFt/ZXJpY2EuY29tL2lt/YWdlcy9yZW5kZXJl/ZC9zZWFyY2gvcG9z/dGVyLzgvNi9icmVh/ay9pbWFnZXMvYXJ0/d29ya2ltYWdlcy9t/ZWRpdW0vMy9icmVh/a2luZy1iYWQtcGFp/bnRpbmctMi1wYXVs/LW1laWplcmluZy5q/cGc' alt='banner' />
                 <div className='absolute top-[30%] translate-x-8 space-y-3 text-white '>
                     <h1 className='font-bold text-4xl'>Breaking Bad</h1>
-                    <p className='font-medium text-lg'>World's Best Mafia Story <WordBreak /> Ever Seen</p>
+                    <p className='font-medium text-lg'>World&apos;s Best Mafia Story <WordBreak /> Ever Seen</p>
                     <button className='flex items-center gap-2 bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl' />Watch Now</button>
                 </div>
             </div>
