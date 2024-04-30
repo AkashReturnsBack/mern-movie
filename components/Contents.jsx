@@ -11,14 +11,14 @@ import FilterGenres from './FilterGenres';
 import { useRouter } from 'next/navigation';
 import Navbar from './Navbar';
 import { useToast } from './ui/use-toast';
+import Loader from './Loader';
 
 
 const Contents = () => {
 
     const Router = useRouter();
-    const toast = useToast();
+    const { toast } = useToast();
     const [movies, setMovies] = useState(null);
-
     const [webShows, setWebShows] = useState(null);
 
     const fetchMovies = async () => {
@@ -28,12 +28,14 @@ const Contents = () => {
         setWebShows(moviesList.slice(20, 30));
     }
 
+
     const handleToast = (message) => {
-        console.log(message)
         toast({
-            title: <span className='text-destructive'>{message}</span>,
+            title: <span className={`${message == "Movie Added Successfully!" ? "text-green-400" : "text-destructive"}`}>{message}</span>,
+            description: <span className='text-gray-500'>Thank you for your Patience</span>,
         })
     }
+
 
     const handleFavourites = async (rank) => {
         const data = await addToFav(rank);
@@ -69,7 +71,7 @@ const Contents = () => {
                     </div>
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
-                    {movies?.map(item => {
+                    {movies ? movies?.map(item => {
                         return <div className='group min-w-[12rem] relative gradient-overlay' key={uuidv4()}>
                             <img src={item?.image} className='w-full' alt='movie img' />
                             <CiHeart onClick={() => { handleFavourites(item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
@@ -78,7 +80,7 @@ const Contents = () => {
                                 <p className='font-medium text-xs'>{item?.genre[0]}</p>
                             </div>
                         </div>
-                    })}
+                    }) : <Loader />}
                 </div>
             </div>
             {/* fourth section */}
@@ -86,11 +88,11 @@ const Contents = () => {
                 <div className='flex justify-between'>
                     <h2 className='font-semibold text-2xl'>Web Series</h2>
                     <div className='flex items-center gap-6'>
-                        <div className='bg-gray-100 rounded-full px-6 py-2'>See All</div>
+                        <div onClick={() => Router.push('/webseries')} className='bg-gray-100 rounded-full px-6 py-2 cursor-pointer'>See All</div>
                     </div>
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
-                    {webShows?.map(item => {
+                    {webShows ? webShows?.map(item => {
                         return <div className='group min-w-[12rem] relative gradient-overlay' key={uuidv4()}>
                             <img src={item?.image} className='w-full' alt='movie img' />
                             <CiHeart className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
@@ -99,7 +101,7 @@ const Contents = () => {
                                 <p className='font-medium text-xs'>{item?.genre[0]}</p>
                             </div>
                         </div>
-                    })}
+                    }) : <Loader />}
                 </div>
             </div>
         </div>

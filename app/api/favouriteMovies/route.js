@@ -30,7 +30,7 @@ export async function POST(request) {
 
     try {
         await Favourite.create({ rank });
-        console.log('Movie Added Successfully')
+        console.log('Movie Added Successfully!')
         return Response.json({
             success: true,
             message: "Movie Added Successfully!"
