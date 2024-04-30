@@ -2,19 +2,15 @@
 
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
-import { CiSearch } from "react-icons/ci";
-import { FaCircleUser } from 'react-icons/fa6';
-import { IoNotificationsOutline } from "react-icons/io5";
 import { IoPlayCircleOutline } from "react-icons/io5";
-import { IoIosArrowDown } from "react-icons/io";
 import WordBreak from './WordBreak';
-import { getMovies } from '../app/utils/getMovies';
+import { addToFav, getMovies } from '../app/utils/getMovies';
 import { CiHeart } from "react-icons/ci";
-import { IoMdHeart } from "react-icons/io";
 import { v4 as uuidv4 } from 'uuid';
 import FilterGenres from './FilterGenres';
-import MoviesList from './MoviesList';
 import { useRouter } from 'next/navigation';
+import Navbar from './Navbar';
+
 
 const Contents = () => {
 
@@ -739,22 +735,7 @@ const Contents = () => {
     return (
         <div className='container h-screen overflow-y-scroll max-w-[75rem] py-4 font-montserrat space-y-8'>
             {/* first section */}
-            <div className='flex items-center justify-between'>
-                <div className='bg-gray-100 flex px-4 py-3 items-center w-[50%]'>
-                    <input type='text' className='w-full bg-transparent outline-none' placeholder='Search...' />
-                    <CiSearch className='text-2xl' />
-                </div>
-                <div className='flex items-center w-[35%] cursor-pointer justify-around'>
-                    <div onClick={getFavMovies} className='group bg-gray-100 flex hover:tracking-widest active:scale-90 transition-all duration-500 ease-in-out items-center gap-1 w-fit px-4 py-3 rounded-full'>
-                        Favourites
-                        <CiHeart className='group-hover:hidden text-xl' />
-                        <IoMdHeart className='hidden group-hover:block group-hover:text-red-500  text-xl' />
-                    </div>
-                    <div className='bg-gray-50 hover:bg-gray-100 rounded-full hover:tracking-widest transition-all ease-in-out duration-500 flex items-center px-4 py-3 gap-2'>
-                        <FaCircleUser className='text-xl' /> Akash
-                    </div>
-                </div>
-            </div>
+            <Navbar />
             {/* second section */}
             {/* <MoviesList /> */}
             <div className='w-full relative h-[23rem]'>
@@ -778,7 +759,7 @@ const Contents = () => {
                     {movies?.map(item => {
                         return <div className='group min-w-[12rem] relative gradient-overlay' key={uuidv4()}>
                             <img src={item?.image} className='w-full' alt='movie img' />
-                            <CiHeart className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
+                            <CiHeart onClick={() => { addToFav(item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
                             <div className='absolute w-full bottom-2 text-center text-white'>
                                 <h2 className='font-semibold text-sm'>{item?.title}</h2>
                                 <p className='font-medium text-xs'>{item?.genre[0]}</p>

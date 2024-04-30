@@ -8,11 +8,34 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 export async function POST(request) {
+
     const { rank } = await request.json();
+    const checkifExist = await Favourite.find({ rank });
+
+    if (checkifExist.length > 0) {
+        try {
+            await Favourite.deleteOne({ rank });
+            return Response.json({
+                success: true,
+                message: "Movie Removed Successfully!"
+            })
+        }
+        catch (err) {
+            console.log(err);
+            return Response.json({
+                success: false,
+                message: "Internal Server Error"
+            })
+        }
+    }
 
     try {
         await Favourite.create({ rank });
         console.log('Movie Added Successfully')
+        return Response.json({
+            success: true,
+            message: "Movie Added Successfully!"
+        })
     }
     catch (err) {
         console.log(err);
@@ -20,10 +43,6 @@ export async function POST(request) {
             success: false,
         })
     }
-
-    return Response.json({
-        success: true,
-    })
 }
 
 export async function GET(request) {
@@ -41,14 +60,14 @@ export async function GET(request) {
     })
 }
 
-export async function DELETE(request) {
-    const { rank } = await request.json();
+// export async function DELETE(request) {
+//     const { rank } = await request.json();
 
-    await Favourite.deleteOne({ rank });
-    const movies = await Favourite.find({});
+//     await Favourite.deleteOne({ rank });
+//     const movies = await Favourite.find({});
 
-    return Response.json({
-        success: true,
-        data: movies
-    })
-}
+//     return Response.json({
+//         success: true,
+//         data: movies
+//     })
+// }

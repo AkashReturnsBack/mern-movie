@@ -1,8 +1,11 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import React, { useState } from 'react'
 import { BiSortAlt2 } from "react-icons/bi";
 import { CiHeart } from 'react-icons/ci';
 import { v4 as uuidv4 } from 'uuid';
+import Navbar from './Navbar';
 
 const MoviesList = () => {
 
@@ -372,7 +375,8 @@ const MoviesList = () => {
 
 
     return (
-        <section className='space-y-6'>
+        <section className='container h-screen overflow-y-scroll max-w-[75rem] py-4 font-montserrat space-y-8'>
+            <Navbar />
             <div className='flex justify-between'>
                 <h2 className='font-semibold text-2xl'>All Movies</h2>
                 <div className='flex items-center bg-gray-100 active:scale-90 transition-all duration-500 cursor-pointer ease-in-out gap-2 rounded-full px-6 py-2'>Sort <BiSortAlt2 className='text-2xl' /></div>
