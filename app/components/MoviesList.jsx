@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import React, { useState } from 'react'
 import { BiSortAlt2 } from "react-icons/bi";
 import { CiHeart } from 'react-icons/ci';
@@ -354,17 +355,21 @@ const MoviesList = () => {
             "imdb_link": "https://www.imdb.com/title/tt0073486"
         }]);
 
+    const addToFav = () => {
+        const res = await('/api/favouriteMovies')
+    }
+
     return (
         <section className='space-y-6'>
             <div className='flex justify-between'>
                 <h2 className='font-semibold text-2xl'>All Movies</h2>
-                <div className='flex items-center gap-2 bg-gray-100 rounded-full px-6 py-2'>Sort <BiSortAlt2 className='text-2xl' /></div>
+                <div className='flex items-center bg-gray-100 active:scale-90 transition-all duration-500 cursor-pointer ease-in-out gap-2 rounded-full px-6 py-2'>Sort <BiSortAlt2 className='text-2xl' /></div>
             </div>
             <div className='flex flex-wrap h-full gap-8'>
                 {movies?.map(item => {
                     return <div className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay' key={uuidv4()}>
                         <img src={item?.image} className='w-full' alt='movie img' />
-                        <CiHeart className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
+                        <CiHeart onClick={addToFav} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer text-4xl' />
                         <div className='absolute w-full bottom-2 text-center text-white'>
                             <h2 className='font-semibold text-sm'>{item?.title}</h2>
                             <p className='font-medium text-xs'>{item?.genre[0]}</p>
