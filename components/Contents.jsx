@@ -28,12 +28,17 @@ const Contents = () => {
         setWebShows(moviesList.slice(20, 30));
     }
 
+    const handleToast = (message) => {
+        console.log(message)
+        toast({
+            title: <span className='text-destructive'>{message}</span>,
+        })
+    }
+
     const handleFavourites = async (rank) => {
         const data = await addToFav(rank);
         console.log(data);
-        toast({
-            title: <span>{data?.message}</span>
-        })
+        handleToast(data.message);
     }
 
     useEffect(() => {
