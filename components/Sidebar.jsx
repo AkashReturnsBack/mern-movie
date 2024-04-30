@@ -8,7 +8,6 @@ import { GoHeart } from "react-icons/go";
 import { FaCircleUser } from "react-icons/fa6";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { AiOutlineLogout } from "react-icons/ai";
-import { ToastAction } from "@/components/ui/toast"
 import { useToast } from './ui/use-toast';
 import Link from 'next/link';
 

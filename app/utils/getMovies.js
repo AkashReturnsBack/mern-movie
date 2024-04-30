@@ -24,5 +24,5 @@ export async function addToFav(rank) {
     })
     const data = await res.json();
     console.log(data);
-    return data.success;
+    return data;
 }

@@ -10,25 +10,35 @@ import { v4 as uuidv4 } from 'uuid';
 import FilterGenres from './FilterGenres';
 import { useRouter } from 'next/navigation';
 import Navbar from './Navbar';
+import { useToast } from './ui/use-toast';
 
 
 const Contents = () => {
 
     const Router = useRouter();
-
+    const toast = useToast();
     const [movies, setMovies] = useState(null);
 
     const [webShows, setWebShows] = useState(null);
 
     const fetchMovies = async () => {
         const moviesList = await getMovies();
-        console.log(moviesList);
-        setMovies(moviesList.data.slice(0, 11));
-        setWebShows(moviesList.data.slice(20, 31));
+        console.log(moviesList.slice(0, 10));
+        setMovies(moviesList.slice(0, 10));
+        setWebShows(moviesList.slice(20, 30));
+    }
+
+    const handleFavourites = async (rank) => {
+        const data = addToFav(rank);
+        console.log(data);
+        toast({
+            title: <span>{data?.message}</span>
+        })
     }
 
     useEffect(() => {
         fetchMovies();
+        console.log('data fetching');
     }, [])
 
     return (
@@ -41,7 +51,7 @@ const Contents = () => {
                 <div className='absolute top-[30%] translate-x-8 space-y-3 text-white '>
                     <h1 className='font-bold text-4xl'>Breaking Bad</h1>
                     <p className='font-medium text-lg'>World&apos;s Best Mafia Story <WordBreak /> Ever Seen</p>
-                    <button className='flex items-center gap-2 bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl' />Watch Now</button>
+                    <button className='flex items-center gap-2 hover:tracking-wider transition-all duration-500 ease-in-out bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl' />Watch Now</button>
                 </div>
             </div>
             {/* third section */}
@@ -57,7 +67,7 @@ const Contents = () => {
                     {movies?.map(item => {
                         return <div className='group min-w-[12rem] relative gradient-overlay' key={uuidv4()}>
                             <img src={item?.image} className='w-full' alt='movie img' />
-                            <CiHeart onClick={() => { addToFav(item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
+                            <CiHeart onClick={() => { handleFavourites(item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
                             <div className='absolute w-full bottom-2 text-center text-white'>
                                 <h2 className='font-semibold text-sm'>{item?.title}</h2>
                                 <p className='font-medium text-xs'>{item?.genre[0]}</p>
