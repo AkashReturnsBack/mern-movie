@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const favouriteSchema = mongoose.Schema({
+const favouriteSchema = new mongoose.Schema({
     rank: {
         type: Number,
         required: true,
