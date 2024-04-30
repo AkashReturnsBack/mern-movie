@@ -355,9 +355,21 @@ const MoviesList = () => {
             "imdb_link": "https://www.imdb.com/title/tt0073486"
         }]);
 
-    const addToFav = () => {
-        const res = await('/api/favouriteMovies')
+    const addToFav = async (rank) => {
+        const res = await fetch('/api/favouriteMovies', {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({
+                rank: rank
+            })
+        })
+        const data = await res.json();
+        console.log(data);
     }
+
+
 
     return (
         <section className='space-y-6'>
@@ -369,7 +381,7 @@ const MoviesList = () => {
                 {movies?.map(item => {
                     return <div className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay' key={uuidv4()}>
                         <img src={item?.image} className='w-full' alt='movie img' />
-                        <CiHeart onClick={addToFav} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer text-4xl' />
+                        <CiHeart onClick={() => addToFav(item?.rank)} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer text-4xl' />
                         <div className='absolute w-full bottom-2 text-center text-white'>
                             <h2 className='font-semibold text-sm'>{item?.title}</h2>
                             <p className='font-medium text-xs'>{item?.genre[0]}</p>

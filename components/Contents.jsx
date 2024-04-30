@@ -8,14 +8,17 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import WordBreak from './WordBreak';
-import { getMovies } from '../utils/getMovies';
+import { getMovies } from '../app/utils/getMovies';
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 import { v4 as uuidv4 } from 'uuid';
 import FilterGenres from './FilterGenres';
 import MoviesList from './MoviesList';
+import { useRouter } from 'next/navigation';
 
 const Contents = () => {
+
+    const Router = useRouter();
 
     const [movies, setMovies] = useState([
         {
@@ -715,6 +718,12 @@ const Contents = () => {
             "imdb_link": "https://www.imdb.com/title/tt0073486"
         }]);
 
+    const getFavMovies = async () => {
+        const res = await fetch('/api/favouriteMovies');
+        const data = await res.json();
+        console.log(data);
+    }
+
     // const fetchMovies = async () => {
     //     const moviesList = await getMovies();
     //     console.log(moviesList);
@@ -736,7 +745,7 @@ const Contents = () => {
                     <CiSearch className='text-2xl' />
                 </div>
                 <div className='flex items-center w-[35%] cursor-pointer justify-around'>
-                    <div className='group bg-gray-100 flex hover:tracking-widest active:scale-90 transition-all duration-500 ease-in-out items-center gap-1 w-fit px-4 py-3 rounded-full'>
+                    <div onClick={getFavMovies} className='group bg-gray-100 flex hover:tracking-widest active:scale-90 transition-all duration-500 ease-in-out items-center gap-1 w-fit px-4 py-3 rounded-full'>
                         Favourites
                         <CiHeart className='group-hover:hidden text-xl' />
                         <IoMdHeart className='hidden group-hover:block group-hover:text-red-500  text-xl' />
@@ -747,22 +756,22 @@ const Contents = () => {
                 </div>
             </div>
             {/* second section */}
-            <MoviesList />
-            {/* <div className='w-full relative h-[23rem]'>
+            {/* <MoviesList /> */}
+            <div className='w-full relative h-[23rem]'>
                 <img className='w-full h-full blackishBg' src='https://imgs.search.brave.com/yzCgKAOafpkAj4JT5KJgq_AVZU_AGU3P2cxYbeKVuOg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9yZW5k/ZXIuZmluZWFydGFt/ZXJpY2EuY29tL2lt/YWdlcy9yZW5kZXJl/ZC9zZWFyY2gvcG9z/dGVyLzgvNi9icmVh/ay9pbWFnZXMvYXJ0/d29ya2ltYWdlcy9t/ZWRpdW0vMy9icmVh/a2luZy1iYWQtcGFp/bnRpbmctMi1wYXVs/LW1laWplcmluZy5q/cGc' alt='banner' />
                 <div className='absolute top-[30%] translate-x-8 space-y-3 text-white '>
                     <h1 className='font-bold text-4xl'>Breaking Bad</h1>
                     <p className='font-medium text-lg'>World's Best Mafia Story <WordBreak /> Ever Seen</p>
                     <button className='flex items-center gap-2 bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl' />Watch Now</button>
                 </div>
-            </div> */}
+            </div>
             {/* third section */}
-            {/* <div className='space-y-6'>
+            <div className='space-y-6'>
                 <div className='flex justify-between'>
                     <h2 className='font-semibold text-2xl'>Movies</h2>
                     <div className='flex items-center gap-6'>
                         <FilterGenres />
-                        <div className='bg-gray-100 rounded-full px-6 py-2'>See All</div>
+                        <div onClick={() => Router.push('/movieslist')} className='bg-gray-100 rounded-full px-6 py-2 cursor-pointer'>See All</div>
                     </div>
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
@@ -777,7 +786,7 @@ const Contents = () => {
                         </div>
                     })}
                 </div>
-            </div> */}
+            </div>
             {/* fourth section */}
             {/* <div className='space-y-6'>
                 <div className='flex justify-between'>
