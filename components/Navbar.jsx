@@ -35,7 +35,7 @@ const Navbar = ({ setActiveFilter }) => {
             return;
         }
         setActiveFilter(searchVal);
-        router.push('/search')
+        router.push(`/search?name=${searchVal}`)
     }
 
     return <div className='flex items-center justify-between'>

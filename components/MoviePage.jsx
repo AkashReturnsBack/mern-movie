@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
-import { useSearchParams } from 'next/navigation'
 import Navbar from './Navbar';
+import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
