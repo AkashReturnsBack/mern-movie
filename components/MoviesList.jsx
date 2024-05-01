@@ -56,7 +56,7 @@ const MoviesList = () => {
                 {movies ? movies?.map(item => {
                     return <div key={uuidv4()} onClick={() => handleOpenMovie(item.rank)} className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay'>
                         <img src={item?.image} className='w-full' alt='movie img' />
-                        <FaHeart onClick={(e) => { handleFavourites(e, item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-red-500 active:text-white transition-all duration-1000 ease-in-out font-extrabold cursor-pointer text-2xl' />
+                        <CiHeart onClick={(e) => { handleFavourites(e, item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-red-500 active:text-white transition-all duration-1000 ease-in-out font-extrabold cursor-pointer text-2xl' />
                         <div className='absolute w-full bottom-2 text-center text-white'>
                             <h2 className='font-semibold text-sm'>{item?.title}</h2>
                             <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>
