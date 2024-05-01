@@ -53,15 +53,12 @@ const WebSeries = () => {
         </div>
         <div className='flex flex-wrap h-full gap-8'>
             {movies ? movies?.map(item => {
-                return <div key={uuidv4()} onClick={() => handleOpenMovie(item.rank)} className='relative'>
-                    <div className='absolute top-0 left-0 w-full h-full gradient-bg rounded-lg'></div>
-                    <div className='group min-w-[12rem] relative gradient-overlay cursor-pointer'>
-                        <img src={item?.image} className='w-full' alt='movie img' />
-                        <CiHeart onClick={(e) => { handleFavourites(e, item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
-                        <div className='absolute w-full bottom-2 text-center text-white'>
-                            <h2 className='font-semibold text-sm'>{item?.title}</h2>
-                            <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>
-                        </div>
+                return <div key={uuidv4()} onClick={() => handleOpenMovie(item.rank)} className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay'>
+                    <img src={item?.image} className='w-full' alt='movie img' />
+                    <FaHeart onClick={(e) => { handleFavourites(e, item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-red-500 active:text-white transition-all duration-1000 ease-in-out font-extrabold cursor-pointer text-2xl' />
+                    <div className='absolute w-full bottom-2 text-center text-white'>
+                        <h2 className='font-semibold text-sm'>{item?.title}</h2>
+                        <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>
                     </div>
                 </div>
             }) : <Loader />}
