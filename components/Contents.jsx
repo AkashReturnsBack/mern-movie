@@ -66,7 +66,7 @@ const Contents = () => {
                 <div className='absolute top-[30%] translate-x-8 space-y-3 text-white '>
                     <h1 className='font-bold text-4xl'>Breaking Bad</h1>
                     <p className='font-medium text-lg'>World&apos;s Best Mafia Story <WordBreak /> Ever Seen</p>
-                    <button onClick={() => Router.push(`/movie?rank=0`)} className='group bg-gray-50 flex hover:tracking-widest text-black active:scale-90 transition-all duration-500 ease-in-out items-center gap-1 w-fit px-4 py-3'><IoPlayCircleOutline className='text-2xl group-hover:scale-105' /> <span className='group-hover'>Watch Now</span></button>
+                    <button onClick={() => Router.push(`/movie?rank=0`)} className=' bg-gray-50 flex hover:tracking-widest text-black border border-black hover:border-white  active:scale-90 transition-all duration-500 ease-in-out hover:text-white hover:bg-black items-center gap-1 w-fit px-4 py-3'><IoPlayCircleOutline className='text-2xl' /> <span className=''>Watch Now</span></button>
                 </div>
             </div>
             {/* third section */}
