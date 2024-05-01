@@ -10,7 +10,16 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 
-const FilterGenres = () => {
+const FilterGenres = ({ setMovies, setWebShows }) => {
+
+    const handleGenre = async (e) => {
+        const genre = e.target.innerText;
+        const res = await fetch(`/api/filterGenre?genre=${genre}`);
+        const data = await res.json();
+        console.log(data);
+        setMovies ? setMovies(data.data) : setWebShows(data.data);
+    }
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -19,10 +28,10 @@ const FilterGenres = () => {
             <DropdownMenuContent className='font-montserrat'>
                 <DropdownMenuLabel className='font-semibold text-lg'>Genres</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className='cursor-pointer hover:tracking-wider transition-all duration-500 ease-in-out' >Crime</DropdownMenuItem>
-                <DropdownMenuItem className='cursor-pointer hover:tracking-wider transition-all duration-500 ease-in-out' >Drama</DropdownMenuItem>
-                <DropdownMenuItem className='cursor-pointer hover:tracking-wider transition-all duration-500 ease-in-out' >Action</DropdownMenuItem>
-                <DropdownMenuItem className='cursor-pointer hover:tracking-wider transition-all duration-500 ease-in-out' >Adventure</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleGenre} className='cursor-pointer hover:tracking-wider transition-all duration-500 ease-in-out' >Crime</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleGenre} className='cursor-pointer hover:tracking-wider transition-all duration-500 ease-in-out' >Drama</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleGenre} className='cursor-pointer hover:tracking-wider transition-all duration-500 ease-in-out' >Action</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleGenre} className='cursor-pointer hover:tracking-wider transition-all duration-500 ease-in-out' >Adventure</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     )

@@ -66,7 +66,7 @@ const Contents = () => {
                 <div className='flex justify-between'>
                     <h2 className='font-semibold text-2xl'>Movies</h2>
                     <div className='flex items-center gap-6'>
-                        <FilterGenres />
+                        <FilterGenres setMovies={setMovies} />
                         <div onClick={() => Router.push('/movieslist')} className='bg-gray-100 rounded-full px-6 py-2 cursor-pointer'>See All</div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ const Contents = () => {
                             <CiHeart onClick={() => { handleFavourites(item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
                             <div className='absolute w-full bottom-2 text-center text-white'>
                                 <h2 className='font-semibold text-sm'>{item?.title}</h2>
-                                <p className='font-medium text-xs'>{item?.genre[0]}</p>
+                                <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>
                             </div>
                         </div>
                     }) : <Loader />}
@@ -88,6 +88,7 @@ const Contents = () => {
                 <div className='flex justify-between'>
                     <h2 className='font-semibold text-2xl'>Web Series</h2>
                     <div className='flex items-center gap-6'>
+                        <FilterGenres setWebShows={setWebShows} />
                         <div onClick={() => Router.push('/webseries')} className='bg-gray-100 rounded-full px-6 py-2 cursor-pointer'>See All</div>
                     </div>
                 </div>
