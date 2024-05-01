@@ -11,13 +11,23 @@ import { getFavMovies } from '@/app/utils/getMovies';
 import { CiHeart } from "react-icons/ci";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useToast } from './ui/use-toast';
+
+
 
 
 const Navbar = ({ setActiveFilter }) => {
 
+    const { toast } = useToast();
+    const router = useRouter();
     const [searchVal, setSearchVal] = useState('');
 
-    const router = useRouter();
+    const handleToast = (message) => {
+        toast({
+            title: <span className='text-destructive'>{message}</span>,
+            description: <span className='text-gray-500'>Thanks you for your Patience</span>,
+        })
+    }
 
     const handleSearchMovie = async (e) => {
         e.preventDefault();
@@ -42,7 +52,7 @@ const Navbar = ({ setActiveFilter }) => {
                     <IoMdHeart className='hidden group-hover:block group-hover:text-red-500  text-xl' />
                 </div>
             </Link>
-            <div className='bg-gray-50 hidden hover:bg-black hover:text-white rounded-full hover:tracking-widest transition-all ease-in-out duration-500 md:flex items-center px-4 py-3 gap-2'>
+            <div onClick={handleToast} className='bg-gray-50 hidden hover:bg-black hover:text-white rounded-full hover:tracking-widest transition-all ease-in-out duration-500 md:flex items-center px-4 py-3 gap-2'>
                 <FaCircleUser className='text-xl' /> Akash
             </div>
         </div>
