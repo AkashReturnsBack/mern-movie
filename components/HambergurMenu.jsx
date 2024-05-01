@@ -32,7 +32,7 @@ const HambergurMenu = () => {
         <SheetTrigger asChild>
             <RxHamburgerMenu className='block md:hidden flex-shrink-0' />
         </SheetTrigger>
-        <SheetContent className='flex flex-col justify-between'>
+        <SheetContent className='flex font-montserrat flex-col justify-between'>
             <SheetHeader>
                 <SheetTitle className='text-3xl font-bold border-b-[1px] pb-4 pt-4 text-start border-black'>Movies</SheetTitle>
                 <div className='border-b-[1px] border-black py-4'>
