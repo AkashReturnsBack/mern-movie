@@ -86,8 +86,8 @@ body {
   scroll-behavior: smooth;
 }
 
-.blackishBg {
-  background-color: rgba(0, 0, 0, 0.2) !important;
+.gradient-bg {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 ::-webkit-scrollbar {

@@ -13,6 +13,7 @@ const Favourites = () => {
     const { toast } = useToast();
 
     const [movies, setMovies] = useState(null);
+    const [activeFilter, setActiveFilter] = useState(null);
 
     const handleToast = (message) => {
         toast({
@@ -38,7 +39,7 @@ const Favourites = () => {
 
     return (
         <section className='container h-screen overflow-y-scroll max-w-[75rem] py-4 font-montserrat space-y-8'>
-            <Navbar />
+            <Navbar setActiveFilter={setActiveFilter} />
             <div className='flex justify-between'>
                 <h2 className='font-semibold text-2xl'>Favourites</h2>
                 <div className='flex items-center bg-gray-100 active:scale-90 transition-all duration-500 cursor-pointer ease-in-out gap-2 rounded-full px-6 py-2'>Sort <BiSortAlt2 className='text-2xl' /></div>

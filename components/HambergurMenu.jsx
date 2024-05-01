@@ -37,7 +37,7 @@ const HambergurMenu = () => {
                 <SheetTitle className='text-3xl font-bold border-b-[1px] pb-4 pt-4 text-start border-black'>Movies</SheetTitle>
                 <div className='border-b-[1px] border-black py-4'>
                     <Link href='/'><div className='flex items-center gap-2 py-2 px-2 hover:bg-white hover:opacity-90 rounded-sm hover:text-black cursor-pointer transition-all duration-500 ease-in-out hover:tracking-widest'><HiMiniHome className='flex-shrink-0' /> Home</div></Link>
-                    <Link href='/movieslist'><div className='flex items-center gap-2 py-2 px-2 hover:bg-white hover:opacity-90 rounded-sm hover:text-black cursor-pointer transition-all duration-500 ease-in-out hover:tracking-widest'><FaRegCirclePlay className='flex-shrink-0' /> Movies</div></Link>
+                    <Link href='/movieslist'><div className='flex items-center gap-2 py-2 px-2 hover:bg-black hover:opacity-90 rounded-sm hover:text-white cursor-pointer transition-all duration-500 ease-in-out hover:tracking-widest'><FaRegCirclePlay className='flex-shrink-0' /> Movies</div></Link>
                     <Link href='/webseries'><div className='flex items-center gap-2 py-2 px-2 hover:bg-white hover:opacity-90 rounded-sm hover:text-black cursor-pointer transition-all duration-500 ease-in-out hover:tracking-widest'><TbMovie className='flex-shrink-0' /> Series</div></Link>
                     <Link href='/favourites'><div className='flex items-center gap-2 py-2 px-2 hover:bg-white hover:opacity-90 rounded-sm hover:text-black cursor-pointer transition-all duration-500 ease-in-out hover:tracking-widest'><GoHeart className='flex-shrink-0' /> Favourites</div></Link>
                 </div>

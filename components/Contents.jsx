@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import Navbar from './Navbar';
 import { useToast } from './ui/use-toast';
 import Loader from './Loader';
+import Link from 'next/link';
 
 
 const Contents = () => {
@@ -19,6 +20,7 @@ const Contents = () => {
     const Router = useRouter();
     const { toast } = useToast();
     const [movies, setMovies] = useState(null);
+    const [activeFilter, setActiveFilter] = useState(null);
     const [webShows, setWebShows] = useState(null);
 
     const fetchMovies = async () => {
@@ -51,14 +53,15 @@ const Contents = () => {
     return (
         <div className='container h-screen overflow-y-scroll max-w-[75rem] py-4 font-montserrat space-y-8'>
             {/* first section */}
-            <Navbar />
+            <Navbar setActiveFilter={setActiveFilter} />
             {/* second section */}
             <div className='w-full relative h-[23rem]'>
-                <img className='w-full h-full blackishBg' src='https://imgs.search.brave.com/yzCgKAOafpkAj4JT5KJgq_AVZU_AGU3P2cxYbeKVuOg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9yZW5k/ZXIuZmluZWFydGFt/ZXJpY2EuY29tL2lt/YWdlcy9yZW5kZXJl/ZC9zZWFyY2gvcG9z/dGVyLzgvNi9icmVh/ay9pbWFnZXMvYXJ0/d29ya2ltYWdlcy9t/ZWRpdW0vMy9icmVh/a2luZy1iYWQtcGFp/bnRpbmctMi1wYXVs/LW1laWplcmluZy5q/cGc' alt='banner' />
+                <div className='absolute top-0 left-0 w-full h-full gradient-bg rounded-lg'></div>
+                <img className='w-full h-full' src='https://imgs.search.brave.com/eHQnLDwLjrIVZ1aLjsH3ylgFY64CqKsKBItFYFMnxb4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzE5ZVRIanpXeEwu/anBn' alt='banner' />
                 <div className='absolute top-[30%] translate-x-8 space-y-3 text-white '>
                     <h1 className='font-bold text-4xl'>Breaking Bad</h1>
                     <p className='font-medium text-lg'>World&apos;s Best Mafia Story <WordBreak /> Ever Seen</p>
-                    <button className='flex items-center gap-2 hover:tracking-wider transition-all duration-500 ease-in-out bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl' />Watch Now</button>
+                    <button onClick={() => Router.push(`/movie?rank=0`)} className='flex items-center gap-2 hover:tracking-wider transition-all duration-500 ease-in-out bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl' />Watch Now</button>
                 </div>
             </div>
             {/* third section */}
@@ -72,14 +75,17 @@ const Contents = () => {
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
                     {movies ? movies?.map(item => {
-                        return <div className='group min-w-[12rem] relative gradient-overlay' key={uuidv4()}>
-                            <img src={item?.image} className='w-full' alt='movie img' />
-                            <CiHeart onClick={() => { handleFavourites(item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
-                            <div className='absolute w-full bottom-2 text-center text-white'>
-                                <h2 className='font-semibold text-sm'>{item?.title}</h2>
-                                <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>
+                        return <Link key={uuidv4()} href={`/movie?rank=${item?.rank}`} className='relative'>
+                            <div className='absolute top-0 left-0 w-full h-full gradient-bg rounded-lg'></div>
+                            <div className='group min-w-[12rem] relative gradient-overlay cursor-pointer'>
+                                <img src={item?.image} className='w-full' alt='movie img' />
+                                <CiHeart onClick={() => { handleFavourites(item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
+                                <div className='absolute w-full bottom-2 text-center text-white'>
+                                    <h2 className='font-semibold text-sm'>{item?.title}</h2>
+                                    <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     }) : <Loader />}
                 </div>
             </div>
@@ -94,14 +100,17 @@ const Contents = () => {
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
                     {webShows ? webShows?.map(item => {
-                        return <div className='group min-w-[12rem] relative gradient-overlay' key={uuidv4()}>
-                            <img src={item?.image} className='w-full' alt='movie img' />
-                            <CiHeart className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
-                            <div className='absolute w-full bottom-2 text-center text-white'>
-                                <h2 className='font-semibold text-sm'>{item?.title}</h2>
-                                <p className='font-medium text-xs'>{item?.genre[0]}</p>
+                        return <Link href={`/movie?rank=${item?.rank}`} className='relative'>
+                            <div className='absolute top-0 left-0 w-full h-full gradient-bg rounded-lg'></div>
+                            <div className='group min-w-[12rem] relative gradient-overlay' key={uuidv4()}>
+                                <img src={item?.image} className='w-full' alt='movie img' />
+                                <CiHeart className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
+                                <div className='absolute w-full bottom-2 text-center text-white'>
+                                    <h2 className='font-semibold text-sm'>{item?.title}</h2>
+                                    <p className='font-medium text-xs'>{item?.genre[0]}</p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     }) : <Loader />}
                 </div>
             </div>

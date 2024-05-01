@@ -8,18 +8,13 @@ import { v4 as uuidv4 } from 'uuid';
 import Navbar from './Navbar';
 import SortMovies from './SortMovies';
 import { useToast } from './ui/use-toast';
-import { getMovies } from '@/app/utils/getMovies';
+import Loader from './Loader';
 
-const MoviesList = () => {
+const SearchMovie = () => {
 
     const { toast } = useToast();
     const [movies, setMovies] = useState(null);
     const [activeFilter, setActiveFilter] = useState(null);
-
-    const fetchMovies = async () => {
-        const moviesList = await getMovies();
-        setMovies(moviesList);
-    }
 
     const handleToast = (message) => {
         toast({
@@ -27,11 +22,6 @@ const MoviesList = () => {
             description: <span className='text-gray-500'>Thank you for your Patience</span>,
         })
     }
-
-    useEffect(() => {
-        fetchMovies();
-        console.log('data fetching');
-    }, [])
 
     const addToFav = async (rank) => {
         const res = await fetch('/api/favouriteMovies', {
@@ -48,11 +38,22 @@ const MoviesList = () => {
         handleToast(data.message);
     }
 
+    const searchMovieFunc = async () => {
+        const res = await fetch(`/api/searchMovies?name=${activeFilter}`);
+        const data = await res.json();
+        console.log(data)
+        setMovies(data.data);
+    }
+
+    useEffect(() => {
+        searchMovieFunc();
+    }, [activeFilter])
+
     return (
         <section className='container h-screen overflow-y-scroll max-w-[75rem] py-4 font-montserrat space-y-8'>
             <Navbar setActiveFilter={setActiveFilter} />
             <div className='flex justify-between'>
-                <h2 className='font-semibold text-2xl flex'>All Movies {" "}<span className={`${activeFilter ? "block" : "hidden"}`}> - ( {activeFilter} )</span></h2>
+                <h2 className='font-semibold text-2xl flex'>Search Result for - {" "}<span className={`${activeFilter ? "block" : "hidden"}`}> -  {activeFilter} ({movies?.length} Results Found!) </span></h2>
                 <SortMovies setMovies={setMovies} setActiveFilter={setActiveFilter} />
             </div>
             <div className='flex flex-wrap h-full gap-8'>
@@ -71,4 +72,4 @@ const MoviesList = () => {
     )
 }
 
-export default MoviesList
+export default SearchMovie;
