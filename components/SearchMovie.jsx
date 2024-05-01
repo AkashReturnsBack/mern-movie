@@ -77,4 +77,9 @@ const SearchMovie = () => {
     )
 }
 
-export default SearchMovie;
+const SearchMovieSuspense = () => {
+    return <Suspense>
+        <SearchMovie />
+    </Suspense>
+}
+export default SearchMovieSuspense;
