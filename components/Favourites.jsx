@@ -42,7 +42,6 @@ const Favourites = () => {
             <Navbar setActiveFilter={setActiveFilter} />
             <div className='flex justify-between'>
                 <h2 className='font-semibold text-2xl'>Favourites</h2>
-                <div className='flex items-center bg-gray-100 active:scale-90 transition-all duration-500 cursor-pointer ease-in-out gap-2 rounded-full px-6 py-2'>Sort <BiSortAlt2 className='text-2xl' /></div>
             </div>
             <div className='flex flex-wrap h-full gap-8'>
                 {movies?.map(item => {
