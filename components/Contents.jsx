@@ -66,7 +66,7 @@ const Contents = () => {
                 <div className='absolute top-[30%] translate-x-8 space-y-3 text-white '>
                     <h1 className='font-bold text-4xl'>Breaking Bad</h1>
                     <p className='font-medium text-lg'>World&apos;s Best Mafia Story <WordBreak /> Ever Seen</p>
-                    <button onClick={() => Router.push(`/movie?rank=0`)} className='flex items-center gap-2 hover:tracking-wider transition-all duration-500 ease-in-out bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl' />Watch Now</button>
+                    <button onClick={() => Router.push(`/movie?rank=0`)} className='flex items-center gap-2 hover:scale-105 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl' />Watch Now</button>
                 </div>
             </div>
             {/* third section */}
@@ -80,7 +80,7 @@ const Contents = () => {
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
                     {movies ? movies?.map(item => {
-                        return <div onClick={handleOpenMovie} className='relative'>
+                        return <div key={uuidv4()} onClick={handleOpenMovie} className='relative'>
                             <div className='absolute top-0 left-0 w-full h-full gradient-bg rounded-lg'></div>
                             <div className='group min-w-[12rem] relative gradient-overlay cursor-pointer'>
                                 <img src={item?.image} className='w-full' alt='movie img' />
