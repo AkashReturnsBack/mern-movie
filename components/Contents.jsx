@@ -96,11 +96,11 @@ const Contents = () => {
             </div>
             {/* fourth section */}
             <div className='space-y-6'>
-                <div className='flex justify-between'>
+                <div className='flex justify-between items-center'>
                     <h2 className='font-semibold text-2xl'>Web Series</h2>
                     <div className='flex items-center gap-6'>
                         <FilterGenres setWebShows={setWebShows} />
-                        <div onClick={() => Router.push('/webseries')} className='bg-gray-100 rounded-full px-6 py-2 cursor-pointer'>See All</div>
+                        <div onClick={() => Router.push('/webseries')} className='bg-gray-100 rounded-full px-2 md:px-6 py-2 cursor-pointer'>See All</div>
                     </div>
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
