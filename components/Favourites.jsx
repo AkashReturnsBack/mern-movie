@@ -43,7 +43,7 @@ const Favourites = () => {
             <div className='flex justify-between'>
                 <h2 className='font-semibold text-2xl'>Favourites</h2>
             </div>
-            <div className='flex flex-wrap h-full gap-8'>
+            <div className='flex flex-wrap gap-8'>
                 {movies?.map(item => {
                     return <div className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay' key={uuidv4()}>
                         <img src={item?.image} className='w-full' alt='movie img' />
