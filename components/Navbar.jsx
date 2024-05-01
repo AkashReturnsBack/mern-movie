@@ -22,9 +22,9 @@ const Navbar = ({ setActiveFilter }) => {
     const router = useRouter();
     const [searchVal, setSearchVal] = useState('');
 
-    const handleToast = (message) => {
+    const handleToast = () => {
         toast({
-            title: <span className='text-destructive'>{message}</span>,
+            title: <span className='text-destructive'>Feature Coming Soon!</span>,
             description: <span className='text-gray-500'>Thanks you for your Patience</span>,
         })
     }
