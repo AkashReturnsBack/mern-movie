@@ -100,9 +100,9 @@ const Contents = () => {
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
                     {webShows ? webShows?.map(item => {
-                        return <Link href={`/movie?rank=${item?.rank}`} className='relative'>
+                        return <Link key={uuidv4()} href={`/movie?rank=${item?.rank}`} className='relative'>
                             <div className='absolute top-0 left-0 w-full h-full gradient-bg rounded-lg'></div>
-                            <div className='group min-w-[12rem] relative gradient-overlay' key={uuidv4()}>
+                            <div className='group min-w-[12rem] relative gradient-overlay'>
                                 <img src={item?.image} className='w-full' alt='movie img' />
                                 <CiHeart className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
                                 <div className='absolute w-full bottom-2 text-center text-white'>

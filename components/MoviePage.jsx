@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import { useSearchParams } from 'next/navigation'
 import Navbar from './Navbar';
+import { v4 as uuidv4 } from 'uuid';
 
 const MoviePage = () => {
 
@@ -51,9 +52,9 @@ const MoviePage = () => {
             <div className='space-y-4'>
                 <div className='flex items-center gap-2'>
                     {movie?.genre ? movie?.genre?.map(i => {
-                        return <div className='border border-black px-4 py-2 rounded-md bg-black text-white hover:bg-white hover:text-black transition-all duration-500 ease-in-out cursor-pointer'>{i}</div>
+                        return <div key={uuidv4()} className='border border-black px-4 py-2 rounded-md bg-black text-white hover:bg-white hover:text-black transition-all duration-500 ease-in-out cursor-pointer'>{i}</div>
                     }) : genre?.map(i => {
-                        return <div className='border border-black px-4 py-2 rounded-md bg-black text-white hover:bg-white hover:text-black transition-all duration-500 ease-in-out cursor-pointer'>{i}</div>
+                        return <div key={uuidv4()} className='border border-black px-4 py-2 rounded-md bg-black text-white hover:bg-white hover:text-black transition-all duration-500 ease-in-out cursor-pointer'>{i}</div>
                     })}
                 </div>
                 <div>{movie?.description || "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student in order to secure his family's future."}</div>
