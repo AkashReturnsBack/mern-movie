@@ -63,7 +63,7 @@ const Contents = () => {
             <div className='w-full relative h-[23rem]'>
                 <div className='absolute top-0 left-0 w-full h-full gradient-bg rounded-lg'></div>
                 <img className='w-full h-full' src='https://imgs.search.brave.com/eHQnLDwLjrIVZ1aLjsH3ylgFY64CqKsKBItFYFMnxb4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzE5ZVRIanpXeEwu/anBn' alt='banner' />
-                <div className='absolute top-[30%] translate-x-8 space-y-3 text-white '>
+                <div className='absolute top-[45%] md:top-[30%] translate-x-4 md:translate-x-8 space-y-3 text-white '>
                     <h1 className='font-bold text-4xl'>Breaking Bad</h1>
                     <p className='font-medium text-lg'>World&apos;s Best Mafia Story <WordBreak /> Ever Seen</p>
                     <button onClick={() => Router.push(`/movie?rank=0`)} className=' bg-gray-50 flex hover:tracking-widest text-black border border-black hover:border-white  active:scale-90 transition-all duration-500 ease-in-out hover:text-white hover:bg-black items-center gap-1 w-fit px-4 py-3'><IoPlayCircleOutline className='text-2xl' /> <span className=''>Watch Now</span></button>
