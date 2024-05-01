@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import { addToFav, getMovies } from '@/app/utils/getMovies';
 import SortMovies from './SortMovies';
 import { useToast } from './ui/use-toast';
+import Loader from './Loader';
 
 const WebSeries = () => {
 
