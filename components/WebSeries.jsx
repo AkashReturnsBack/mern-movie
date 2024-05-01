@@ -51,11 +51,11 @@ const WebSeries = () => {
             <h2 className='font-semibold text-2xl flex'>Web Series {" "}<span className={`${activeFilter ? "block" : "hidden"}`}> - ( {activeFilter} )</span></h2>
             <SortMovies setMovies={setMovies} setActiveFilter={setActiveFilter} />
         </div>
-        <div className='flex flex-wrap h-full gap-8'>
+        <div className='flex flex-wrap gap-8'>
             {movies ? movies?.map(item => {
                 return <div key={uuidv4()} onClick={() => handleOpenMovie(item.rank)} className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay'>
                     <img src={item?.image} className='w-full' alt='movie img' />
-                    <CiHeart onClick={(e) => { handleFavourites(e, item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-red-500 active:text-white transition-all duration-1000 ease-in-out font-extrabold cursor-pointer text-2xl' />
+                    <CiHeart onClick={(e) => { handleFavourites(e, item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white active:text-red-500 transition-all duration-1000 ease-in-out font-extrabold cursor-pointer text-3xl' />
                     <div className='absolute w-full bottom-2 text-center text-white'>
                         <h2 className='font-semibold text-sm'>{item?.title}</h2>
                         <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>

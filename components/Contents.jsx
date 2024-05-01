@@ -66,7 +66,7 @@ const Contents = () => {
                 <div className='absolute top-[30%] translate-x-8 space-y-3 text-white '>
                     <h1 className='font-bold text-4xl'>Breaking Bad</h1>
                     <p className='font-medium text-lg'>World&apos;s Best Mafia Story <WordBreak /> Ever Seen</p>
-                    <button onClick={() => Router.push(`/movie?rank=0`)} className='flex items-center gap-2 group overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 text-black px-4 py-2 rounded-sm'><IoPlayCircleOutline className='text-2xl group-hover:scale-105' /> <span className='group-hover'>Watch Now</span></button>
+                    <button onClick={() => Router.push(`/movie?rank=0`)} className='group bg-gray-50 flex hover:tracking-widest text-black active:scale-90 transition-all duration-500 ease-in-out items-center gap-1 w-fit px-4 py-3'><IoPlayCircleOutline className='text-2xl group-hover:scale-105' /> <span className='group-hover'>Watch Now</span></button>
                 </div>
             </div>
             {/* third section */}
@@ -105,12 +105,15 @@ const Contents = () => {
                 </div>
                 <div className='flex h-full gap-8 overflow-x-scroll'>
                     {webShows ? webShows?.map(item => {
-                        return <div key={uuidv4()} onClick={() => handleOpenMovie(item.rank)} className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay'>
-                            <img src={item?.image} className='w-full' alt='movie img' />
-                            <CiHeart onClick={(e) => { handleFavourites(e, item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-red-500 active:text-white transition-all duration-1000 ease-in-out font-extrabold cursor-pointer text-2xl' />
-                            <div className='absolute w-full bottom-2 text-center text-white'>
-                                <h2 className='font-semibold text-sm'>{item?.title}</h2>
-                                <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>
+                        return <div key={uuidv4()} onClick={() => handleOpenMovie(item.rank)} className='relative'>
+                            <div className='absolute top-0 left-0 w-full h-full gradient-bg rounded-lg'></div>
+                            <div className='group min-w-[12rem] relative gradient-overlay cursor-pointer'>
+                                <img src={item?.image} className='w-full' alt='movie img' />
+                                <CiHeart onClick={(e) => { handleFavourites(e, item?.rank) }} className='absolute top-4 right-4 hidden group-hover:block text-white font-extrabold cursor-pointer  text-3xl' />
+                                <div className='absolute w-full bottom-2 text-center text-white'>
+                                    <h2 className='font-semibold text-sm'>{item?.title}</h2>
+                                    <p className='font-medium text-xs'>{item?.genre.join(', ')}</p>
+                                </div>
                             </div>
                         </div>
                     }) : <Loader />}

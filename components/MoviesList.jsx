@@ -52,7 +52,7 @@ const MoviesList = () => {
                 <h2 className='font-semibold text-2xl flex'>All Movies {" "}<span className={`${activeFilter ? "block" : "hidden"}`}> - ( {activeFilter} )</span></h2>
                 <SortMovies setMovies={setMovies} setActiveFilter={setActiveFilter} />
             </div>
-            <div className='flex flex-wrap h-full gap-8'>
+            <div className='flex flex-wrap gap-8'>
                 {movies ? movies?.map(item => {
                     return <div key={uuidv4()} onClick={() => handleOpenMovie(item.rank)} className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay'>
                         <img src={item?.image} className='w-full' alt='movie img' />
