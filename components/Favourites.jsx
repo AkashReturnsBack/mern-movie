@@ -50,7 +50,7 @@ const Favourites = () => {
     <section className="container h-screen overflow-y-scroll max-w-[75rem] py-4 font-montserrat space-y-8">
       <Navbar setActiveFilter={setActiveFilter} />
       <div className="flex justify-between">
-        <h2 className="font-semibold text-2xl">Favourites</h2>
+        <h2 className="font-semibold text-2xl">Favourites List</h2>
       </div>
       <div className="flex flex-wrap gap-8">
         {movies ? (
