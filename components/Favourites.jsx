@@ -51,7 +51,7 @@ const Favourites = () => {
                 <h2 className='font-semibold text-2xl'>Favourites</h2>
             </div>
             <div className='flex flex-wrap gap-8'>
-                {movies ? movies?.map(item => {
+                {movies ? movies.length==0 ? <div className='font-medium text-lg text-center'>Try Adding Some Movies 😸</div> : movies?.map(item => {
                     return (
                         <div key={uuidv4()} onClick={() => handleOpenMovie(item.rank)} className='group min-w-[9rem] max-w-[9rem] relative gradient-overlay'>
                             <img src={item?.image} className='w-full' alt='movie img' />
