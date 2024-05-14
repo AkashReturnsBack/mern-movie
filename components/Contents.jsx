@@ -72,7 +72,7 @@ const Contents = () => {
             {/* third section */}
             <div className='space-y-6'>
                 <div className='flex justify-between'>
-                    <h2 className='font-semibold text-2xl'>Movies</h2>
+                    <h2 className='font-semibold text-2xl'>Movies Testing</h2>
                     <div className='flex items-center gap-6'>
                         <FilterGenres setMovies={setMovies} />
                         <div onClick={() => Router.push('/movieslist')} className='bg-gray-100 rounded-full px-6 py-2 cursor-pointer'>See All</div>
